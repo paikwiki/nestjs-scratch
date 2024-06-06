@@ -6,7 +6,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {
     console.log(`🧐 [AppController.constructor] exec()`);
     console.log(
-      `🧐 [AppController.constructor] appService - ${(appService as any).constructor}`,
+      `🧐 [AppController.constructor] appService - ${(appService as any).constructor.name}`,
     );
   }
 
