@@ -8,8 +8,4 @@ import { BooksModule } from './books/books.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  constructor() {
-    console.log(`🧐 [AppModule.constructor] exec()`);
-  }
-}
+export class AppModule {}
