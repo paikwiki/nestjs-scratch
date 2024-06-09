@@ -1,19 +1,28 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
+import { BookRepository } from "./domain/book.repository";
+import { InjectionToken } from "./application/inject.token";
 
 @Injectable()
 export class BooksService {
-  create(_: CreateBookDto) {
-    return "This action adds a new book";
+  constructor(
+    @Inject(InjectionToken.IN_MEMORY_BOOK_REPOSITORY)
+    private readonly booksRepository: BookRepository,
+  ) {}
+
+  async create(dto: CreateBookDto) {
+    const id = await this.booksRepository.newId();
+    const book = await this.booksRepository.save({ id, ...dto });
+    return book;
   }
 
-  findAll() {
-    return `This action returns all books`;
+  async findAll() {
+    return await this.booksRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
+  async findOne(id: number) {
+    return await this.booksRepository.findById(id);
   }
 
   update(id: number, _: UpdateBookDto) {
