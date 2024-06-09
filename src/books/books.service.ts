@@ -7,7 +7,7 @@ import { InjectionToken } from "./application/inject.token";
 @Injectable()
 export class BooksService {
   constructor(
-    @Inject(InjectionToken.IN_MEMORY_BOOK_REPOSITORY)
+    @Inject(InjectionToken.BOOK_REPOSITORY)
     private readonly booksRepository: BookRepository,
   ) {}
 

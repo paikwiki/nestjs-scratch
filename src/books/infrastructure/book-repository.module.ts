@@ -5,10 +5,10 @@ import { InjectionToken } from "../application/inject.token";
 @Module({
   providers: [
     {
-      provide: InjectionToken.IN_MEMORY_BOOK_REPOSITORY,
+      provide: InjectionToken.BOOK_REPOSITORY,
       useClass: InMemoryBookRepository,
     },
   ],
-  exports: [InjectionToken.IN_MEMORY_BOOK_REPOSITORY],
+  exports: [InjectionToken.BOOK_REPOSITORY],
 })
 export class BookRepositoryModule {}
