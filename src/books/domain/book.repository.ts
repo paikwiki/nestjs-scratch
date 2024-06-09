@@ -1,7 +1,7 @@
 import { Book } from "./book.entity";
 
 export interface BookRepository {
-  newId: () => Promise<string>;
+  newId: () => Promise<number>;
   save(book: Book): Promise<Book>;
   findById(id: number): Promise<Book>;
   findAll(): Promise<Book[]>;
