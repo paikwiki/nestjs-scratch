@@ -8,21 +8,21 @@ import { InjectionToken } from "./application/inject.token";
 export class BooksService {
   constructor(
     @Inject(InjectionToken.BOOK_REPOSITORY)
-    private readonly booksRepository: BookRepository,
+    private readonly bookRepository: BookRepository,
   ) {}
 
   async create(dto: CreateBookDto) {
-    const id = await this.booksRepository.newId();
-    const book = await this.booksRepository.save({ id, ...dto });
+    const id = await this.bookRepository.newId();
+    const book = await this.bookRepository.save({ id, ...dto });
     return book;
   }
 
   async findAll() {
-    return await this.booksRepository.findAll();
+    return await this.bookRepository.findAll();
   }
 
   async findOne(id: number) {
-    return await this.booksRepository.findById(id);
+    return await this.bookRepository.findById(id);
   }
 
   update(id: number, _: UpdateBookDto) {
