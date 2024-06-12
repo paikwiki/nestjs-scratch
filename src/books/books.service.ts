@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { HttpException, Inject, Injectable } from "@nestjs/common";
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
 import { BookRepository } from "./domain/book.repository";
@@ -25,11 +25,16 @@ export class BooksService {
     return await this.bookRepository.findById(id);
   }
 
-  update(id: number, _: UpdateBookDto) {
-    return `This action updates a #${id} book`;
+  async update(id: number, dto: UpdateBookDto) {
+    const persisted = await this.bookRepository.findById(id);
+    if (!persisted) throw new HttpException("Book not found", 404);
+
+    return await this.bookRepository.save({ ...persisted, ...dto });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  async remove(id: number) {
+    const persisted = await this.bookRepository.findById(id);
+
+    return persisted ? await this.bookRepository.remove(id) : null;
   }
 }
