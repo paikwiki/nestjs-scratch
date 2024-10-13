@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
-import { InMemoryBookRepository } from "./in-memory-book.repository";
 import { InjectionToken } from "../application/inject.token";
+import { InMemoryBookRepository } from "./in-memory-book.repository";
 
 @Module({
   providers: [

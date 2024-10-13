@@ -1,7 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { InjectionToken } from "./application/inject.token";
 import { BooksService } from "./books.service";
 import { BookRepository } from "./domain/book.repository";
-import { InjectionToken } from "./application/inject.token";
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
 

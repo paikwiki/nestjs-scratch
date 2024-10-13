@@ -1,8 +1,8 @@
 import { HttpException, Inject, Injectable } from "@nestjs/common";
+import { InjectionToken } from "./application/inject.token";
+import { BookRepository } from "./domain/book.repository";
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
-import { BookRepository } from "./domain/book.repository";
-import { InjectionToken } from "./application/inject.token";
 
 @Injectable()
 export class BooksService {
